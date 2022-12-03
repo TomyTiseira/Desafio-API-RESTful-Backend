@@ -44,8 +44,9 @@ productRouter.put("/:id", (req, res) => {
   const { id } = req.params;
   const { product } = req.body;
 
+  // Validate id.
   if (!idValid(id)) {
-    res.status(400).send(`${id} no es valido.`);
+    res.status(400).json({ error: "Producto no encontrado" });
     return;
   }
 
@@ -59,8 +60,9 @@ productRouter.put("/:id", (req, res) => {
 productRouter.delete("/:id", (req, res) => {
   const { id } = req.params;
 
+  // Validate id.
   if (!idValid(id)) {
-    res.status(400).send(`${id} no es valido.`);
+    res.status(400).json({ error: "Producto no encontrado" });
     return;
   }
 
